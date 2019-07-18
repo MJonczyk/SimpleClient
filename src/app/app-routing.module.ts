@@ -1,0 +1,19 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserBlockComponent } from './user-block/user-block.component';
+
+const paths: Routes = [
+  {path: 'studentslist', component: UserListComponent },
+  {path: 'studentsblocks', component: UserBlockComponent },
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(paths)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class AppRoutingModule { }
