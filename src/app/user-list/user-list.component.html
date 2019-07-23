@@ -1,6 +1,28 @@
-<h1>User List Component</h1>
-<ul>
-  <li *ngFor="let student of students">
-    <span>{{student.firstName}}   {{student.lastName}}  {{student.universityIndex}}</span>
-  </li>
-</ul>
+<div class="mat-app-background">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Index</td>
+    <td>Birthplace</td>
+    <td>Birthdate</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </thead>
+  <tr *ngFor="let student of students">
+    <td>{{student.studentId}}</td>
+    <td>{{student.firstName}} {{student.lastName}}</td>
+    <td>{{student.universityIndex}}</td>
+    <td>{{student.birthplace}}</td>
+    <td>{{student.birthdate}}</td>
+    <td><button (click)="edit(student)" mat-flat-button color="primary">Edit</button></td>
+    <td><button (click)="delete(student)" mat-flat-button color="warn">X</button></td>
+  </tr>
+</table>
+  <div class="add_button">
+    <button (click)="add()" mat-flat-button color="primary">Add Student</button>
+  </div>
+</div>
+

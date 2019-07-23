@@ -15,12 +15,26 @@ export class UserService {
 
   private studentUrl = 'http://localhost:8080/students';
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   constructor(private http: HttpClient) { }
 
   getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(this.studentUrl)
       .pipe(
         catchError(this.handleError<Student[]>('getStudents')),
+    );
+  }
+
+  deleteStudent(student: Student | number): Observable<Student> {
+    const id = typeof student === 'number' ? student : student.studentId;
+    const url = `${this.studentUrl}/${id}`;
+
+    return this.http.delete<Student>(url, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Student>('deleteStudent'))
     );
   }
 
