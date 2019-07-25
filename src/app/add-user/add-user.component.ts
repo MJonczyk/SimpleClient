@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Student } from '../../Student';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor() { }
+  student: Student = new Student();
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  addStudent() {
+    this.userService.addStudent(this.student).subscribe();
+    this.router.navigateByUrl('/studentslist');
   }
 
 }

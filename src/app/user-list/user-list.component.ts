@@ -22,12 +22,10 @@ export class UserListComponent implements OnInit {
       .subscribe(students => this.students = students);
   }
 
-  add(): void {}
-
   edit(student: Student): void {}
 
   delete(student: Student): void {
-    this.students.filter(s => s.studentId !== student.studentId);
+    this.students = this.students.filter(s => s.universityIndex !== student.universityIndex);
     this.userService.deleteStudent(student).subscribe();
   }
 }

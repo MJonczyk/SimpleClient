@@ -28,6 +28,20 @@ export class UserService {
     );
   }
 
+  addStudent(student: Student): Observable<Student> {
+    return this.http.post<Student>(this.studentUrl, student, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Student>('addStudent'))
+      );
+  }
+
+  editStudent(student: Student): Observable<any> {
+    return this.http.put(this.studentUrl, student, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('editStudent'))
+      );
+  }
+
   deleteStudent(student: Student | number): Observable<Student> {
     const id = typeof student === 'number' ? student : student.studentId;
     const url = `${this.studentUrl}/${id}`;
