@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserService } from './user.service';
 import { MatButtonModule } from '@angular/material';
 import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AddUserComponent } from './add-user/add-user.component';
     AppComponent,
     UserListComponent,
     UserBlockComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

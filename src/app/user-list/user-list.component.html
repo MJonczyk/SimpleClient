@@ -11,13 +11,13 @@
     <td></td>
   </tr>
   </thead>
-  <tr *ngFor="let student of students">
+  <tr *ngFor="let student of getStudents()">
     <td>{{student.studentId}}</td>
     <td>{{student.firstName}} {{student.lastName}}</td>
     <td>{{student.universityIndex}}</td>
     <td>{{student.birthplace}}</td>
     <td>{{student.birthdate}}</td>
-    <td><button (click)="edit(student)" mat-flat-button color="primary">Edit</button></td>
+    <td><button [routerLink]="['/edit', student.studentId]" mat-flat-button color="primary">Edit</button></td>
     <td><button (click)="delete(student)" mat-flat-button color="warn">X</button></td>
   </tr>
 </table>

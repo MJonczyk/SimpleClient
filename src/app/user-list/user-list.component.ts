@@ -14,18 +14,22 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.getStudents();
+    this.accessStudents();
   }
 
-  getStudents(): void {
+  accessStudents(): void {
     this.userService.getStudents()
-      .subscribe(students => this.students = students);
+      .subscribe(students => { this.userService.students = students; });
+  }
+
+  getStudents(): Student[] {
+    return this.userService.students;
   }
 
   edit(student: Student): void {}
 
   delete(student: Student): void {
-    this.students = this.students.filter(s => s.universityIndex !== student.universityIndex);
+    this.userService.students = this.userService.students.filter(s => s.universityIndex !== student.universityIndex);
     this.userService.deleteStudent(student).subscribe();
   }
 }

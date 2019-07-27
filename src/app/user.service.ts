@@ -4,10 +4,6 @@ import { Student } from '../Student';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new Headers({'Content-Type': 'application/json'})
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +15,8 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  students: Student[];
+
   constructor(private http: HttpClient) { }
 
   getStudents(): Observable<Student[]> {
@@ -26,6 +24,14 @@ export class UserService {
       .pipe(
         catchError(this.handleError<Student[]>('getStudents')),
     );
+  }
+
+  getStudent(studentId: string): Observable<Student> {
+    const url = `${this.studentUrl}/${studentId}`;
+    return this.http.get<Student>(url)
+      .pipe(
+        catchError(this.handleError<Student>('getStudent')),
+      );
   }
 
   addStudent(student: Student): Observable<Student> {
@@ -36,7 +42,8 @@ export class UserService {
   }
 
   editStudent(student: Student): Observable<any> {
-    return this.http.put(this.studentUrl, student, this.httpOptions)
+    const url = `${this.studentUrl}/${student.studentId}`;
+    return this.http.put(url, student, this.httpOptions)
       .pipe(
         catchError(this.handleError<any>('editStudent'))
       );

@@ -18,6 +18,7 @@ export class AddUserComponent implements OnInit {
   }
 
   addStudent() {
+    this.userService.students.push(this.student);
     this.userService.addStudent(this.student).subscribe();
     this.router.navigateByUrl('/studentslist');
   }
