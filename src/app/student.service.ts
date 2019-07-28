@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of} from 'rxjs';
 import { Student } from '../Student';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, filter, pairwise } from 'rxjs/operators';
+import { catchError, filter, map, pairwise } from 'rxjs/operators';
 import { Router, RoutesRecognized } from '@angular/router';
+import { GetAllResponse } from './get-all-response';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,9 @@ export class StudentService {
   }
 
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(this.studentUrl)
+    return this.http.get<GetAllResponse>(this.studentUrl)
       .pipe(
+        map(response => { console.log(response); return response._embedded.studentList; }),
         catchError(this.handleError<Student[]>('getStudents')),
     );
   }
