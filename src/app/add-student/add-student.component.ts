@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../Student';
-import { UserService } from '../user.service';
+import { StudentService } from '../student.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  templateUrl: './add-student.component.html',
+  styleUrls: ['./add-student.component.css']
 })
-export class AddUserComponent implements OnInit {
+export class AddStudentComponent implements OnInit {
 
   student: Student = new Student();
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: StudentService, private router: Router) {
   }
 
   ngOnInit() {

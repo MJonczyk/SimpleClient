@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../Student';
-import { UserService } from '../user.service';
+import { StudentService } from '../student.service';
 import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -8,15 +8,15 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  templateUrl: './edit-student.component.html',
+  styleUrls: ['./edit-student.component.css']
 })
-export class EditUserComponent implements OnInit {
+export class EditStudentComponent implements OnInit {
 
   student$: Observable<Student>;
   student: Student;
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private userService: StudentService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.student$ = this.route.paramMap.pipe(

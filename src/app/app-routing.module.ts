@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserBlockComponent } from './user-block/user-block.component';
-import { AddUserComponent } from './add-user/add-user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { StudentBlockComponent } from './student-block/student-block.component';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 
 const paths: Routes = [
-  {path: 'studentslist', component: UserListComponent },
-  {path: 'studentsblocks', component: UserBlockComponent },
-  {path: 'add', component: AddUserComponent },
-  {path: 'edit/:id', component: EditUserComponent },
+  {path: 'studentslist', component: StudentListComponent },
+  {path: 'studentsblocks', component: StudentBlockComponent },
+  {path: 'add', component: AddStudentComponent },
+  {path: 'edit/:id', component: EditStudentComponent },
 
 ];
 

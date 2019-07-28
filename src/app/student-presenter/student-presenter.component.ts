@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../Student';
-import { UserService } from '../user.service';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-user-presenter',
-  templateUrl: './user-presenter.component.html',
-  styleUrls: ['./user-presenter.component.css']
+  templateUrl: './student-presenter.component.html',
+  styleUrls: ['./student-presenter.component.css']
 })
-export class UserPresenterComponent implements OnInit {
+export class StudentPresenterComponent implements OnInit {
 
   students: Student[];
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: StudentService) { }
 
   ngOnInit() {
     this.accessStudents();

@@ -8,7 +8,7 @@ import { Router, RoutesRecognized } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class StudentService {
 
   private studentUrl = 'http://localhost:8080/students';
   previousUrl: string;
