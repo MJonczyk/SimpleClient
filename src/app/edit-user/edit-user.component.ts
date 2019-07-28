@@ -3,7 +3,8 @@ import { Student } from '../../Student';
 import { UserService } from '../user.service';
 import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-user',
@@ -24,11 +25,14 @@ export class EditUserComponent implements OnInit {
     this.student$.subscribe(s => this.student = s);
   }
 
-  editStudent() {
+  editStudent(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
     const index = this.userService.students.findIndex( s => s.studentId === this.student.studentId);
     this.userService.students[index] = this.student;
     this.userService.editStudent(this.student).subscribe();
-    this.router.navigateByUrl('/studentslist');
+    this.router.navigateByUrl(this.userService.previousUrl);
   }
 
 }

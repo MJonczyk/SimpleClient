@@ -1,0 +1,60 @@
+.card-title {
+  background-color: #3F51B5;
+  color: white;
+  padding: 8px;
+}
+
+mat-grid-tile {
+  border: none;
+}
+
+mat-card {
+  height: 85%;
+  width: 95%;
+  border: solid 1px #dddddd;
+  margin: 0;
+  padding: 0;
+}
+
+mat-card-content {
+  margin-top: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin: 8px ;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+.add-button {
+  color: #3F51B5;
+  font-size: 100px;
+  height: 85%;
+  width: 95%;
+  background-color: white;
+}
+
+.add-button:hover {
+  background-color: #dddddd;
+  cursor: pointer;
+}
+
+.card-actions {
+  text-align: right;
+  margin-right: 16px;
+}
+
+.action-button {
+  margin: 0 8px 16px 16px;
+}
+
+button {
+  text-align: center;
+}

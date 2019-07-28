@@ -1,1 +1,36 @@
-<h1>User Block Component</h1>
+<div>
+
+  <mat-grid-list cols="3" rowHeight="240px">
+
+    <mat-grid-tile *ngFor="let student of getStudents()">
+
+      <mat-card>
+
+        <div class="card-title">  {{student.studentId}}   {{student.firstName}} {{student.lastName}}</div>
+
+        <mat-card-content>
+          <ul>
+            <li><label for="index">Index</label><span id="index">{{student.universityIndex}}</span></li>
+            <li><label for="birthdate">Birthdate</label><span id="birthdate">{{student.birthdate}}</span></li>
+            <li><label for="birthplace">Birthplace</label><span id="birthplace">{{student.birthplace}}</span></li>
+          </ul>
+        </mat-card-content>
+
+        <mat-card-actions class="card-actions">
+          <button class="action-button" [routerLink]="['/edit', student.studentId]" mat-flat-button color="primary">Edit</button>
+          <button class="action-button" (click)="delete(student)" mat-flat-button color="warn">X</button>
+        </mat-card-actions>
+
+      </mat-card>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+      <button class="add-button" routerLink="/add">+</button>
+
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</div>

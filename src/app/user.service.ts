@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of} from 'rxjs';
 import { Student } from '../Student';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, filter, pairwise } from 'rxjs/operators';
+import { Router, RoutesRecognized } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class UserService {
 
   private studentUrl = 'http://localhost:8080/students';
+  previousUrl: string;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,7 +19,14 @@ export class UserService {
 
   students: Student[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.router.events.pipe(
+      filter(e => e instanceof RoutesRecognized),
+      pairwise())
+      .subscribe((event: any[]) => {
+        this.previousUrl = event[0].urlAfterRedirects;
+      });
+  }
 
   getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(this.studentUrl)
